@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇸 아이슬란드 여행 2026.07.02–07.12</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header>
+  <h1>🇮🇸 아이슬란드 여행 일정 · 2026.07.02 → 07.12</h1>
+  <p>링로드 + 하이랜드(F208 · F35) · 스팟 마커를 클릭하면 정보가 뜹니다 · 칩을 눌러 날짜별 경로·찜·숙박을 켜고 끄세요</p>
+</header>
+
+<div id="map"></div>
+
+<div class="wrap">
+  <div class="filters" id="filters"></div>
+  <div id="days"></div>
+  <div class="legend" id="legend"></div>
+</div>
+
+<footer>
+  ⚠️ F-road(F208·F35)는 4x4 필수 · 구글맵보다 25~50% 더 소요 · 매일 road.is(도로)·safetravel.is(날씨·도하) 확인<br>
+  🚁 드론 배지는 현재 규정 기준 가이드 · 실제 비행 전 island.is 드론 지도·현장 표지 확인 · 출국 전 flydrone.is 등록<br>
+  일정 수정은 <code>data.js</code> 만 고치면 됩니다. 사진은 <code>images/</code> 폴더.
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

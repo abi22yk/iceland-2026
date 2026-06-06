@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/
+*.swp
+
+# 개인 데이터 (혹시라도 이 폴더로 들어올 경우 제외)
+takeout*/
+takeout*.zip
+*_coords.json

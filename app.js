@@ -4,8 +4,15 @@
 // ---------- 일정 데이터 ----------
 // type: spot|hotel|trail|spring|food|airport
 
-const ICON = {airport:"✈️",spot:"📍",hotel:"🛏️",trail:"🥾",spring:"♨️",food:"🍴"};
+const ICON = {home:"🏠",airport:"✈️",spot:"📍",hotel:"🛏️",trail:"🥾",spring:"♨️",food:"🍴"};
 const DR = {ok:"가능",permit:"허가/조건부",no:"금지"};
+
+// 아이슬란드 좌표만 지도 자동맞춤·경로선에 사용 (집/경유공항은 마커만 표시)
+const isIce = c => c[0]>=63 && c[0]<=67 && c[1]>=-25 && c[1]<=-13;
+// Google Maps: 정확한 좌표에 핀을 찍되 라벨은 "장소명"으로 표시
+function gmPin(label,c){ const lbl=String(label).replace(/[()]/g,'').replace(/\s+/g,' ').trim(); return `https://www.google.com/maps?q=${c[0]},${c[1]}(${encodeURIComponent(lbl)})`; }
+function gmQ(s){ return s.gq || s.e.split(/ \(| \/ /)[0] + (s.intl?"":", Iceland"); }
+function gmDir(stops){ return "https://www.google.com/maps/dir/"+stops.map(s=>encodeURIComponent(gmQ(s))).join("/"); }
 
 // ---------- 지도 ----------
 const map = L.map('map',{scrollWheelZoom:true}).setView([64.9,-18.6],6);
@@ -19,18 +26,18 @@ DAYS.forEach((D, di)=>{
   const grp = L.layerGroup().addTo(map);
   const pts = [];
   D.stops.forEach((s, si)=>{
+    if(!isIce(s.c)) return;   // 집·경유 공항(서울/인천/코펜하겐)은 지도에 표기 안 함 — 카드에만 표시
     allBounds.push(s.c); pts.push(s.c);
     const icon = L.divIcon({className:'', html:`<div class="num" style="background:${D.color}">${si+1}</div>`,
        iconSize:[22,22], iconAnchor:[11,11]});
-    const gm = `https://www.google.com/maps/search/?api=1&query=${s.c[0]},${s.c[1]}`;
     L.marker(s.c,{icon}).addTo(grp).bindPopup(
       `<b>${ICON[s.t]||"📍"} ${s.n}</b><br><span style="color:#777">${s.e}</span>`+
       (s.note?`<br>${s.note}`:``)+
       (s.dr?`<br>🚁 드론 <b style="color:${s.dr==='ok'?'#2a8':s.dr==='permit'?'#c80':'#c33'}">${DR[s.dr]}</b> — ${s.drn||''}`:``)+
-      `<br><a href="${gm}" target="_blank">Google Maps에서 열기 ↗</a>`);
+      `<br><a href="${gmPin(s.n,s.c)}" target="_blank">Google Maps에서 열기 ↗</a>`);
   });
-  // 연결 polyline (당일 + 전날 마지막 → 당일 첫 스팟)
-  if(di>0){ const prev = DAYS[di-1].stops; if(prev.length) pts.unshift(prev[prev.length-1].c); }
+  // 연결 polyline (아이슬란드 구간만 · 당일 + 전날 마지막 → 당일 첫 스팟)
+  if(di>0){ const prev = DAYS[di-1].stops.filter(s=>isIce(s.c)); if(prev.length && pts.length) pts.unshift(prev[prev.length-1].c); }
   if(pts.length>1) L.polyline(pts,{color:D.color,weight:3.5,opacity:.85}).addTo(grp);
   dayLayers.push(grp);
 });
@@ -64,7 +71,7 @@ const dbox=document.getElementById('days');
 DAYS.forEach((D,di)=>{
   const el=document.createElement('div'); el.className='day'+(di===0?' open':'');
   el.style.setProperty('--c',D.color);
-  const gmDir = "https://www.google.com/maps/dir/"+D.stops.map(s=>s.c.join(",")).join("/");
+  const gmDirUrl = D.flight ? null : gmDir(D.stops);
   el.innerHTML=`
     <div class="day-h" style="--c:${D.color}">
       <span class="date">${D.day}</span>
@@ -85,14 +92,14 @@ DAYS.forEach((D,di)=>{
         <div class="ds">${t.ds}</div><div class="tp">${t.tp}</div>
         ${t.links?`<div class="tlinks">${t.links.map(l=>`<a href="${l.u}" target="_blank">${l.t} ↗</a>`).join("")}</div>`:``}</div>`).join(""):``}
       <div class="meta"><span class="pill">🛏 숙박 <b>${D.stay}</b></span></div>
-      <a class="gm" href="${gmDir}" target="_blank">🗺️ 이 날 경로 Google Maps로 열기 ↗</a>
+      ${gmDirUrl?`<a class="gm" href="${gmDirUrl}" target="_blank">🗺️ 이 날 경로 Google Maps로 열기 ↗</a>`:``}
     </div>`;
   el.querySelector('.day-h').onclick=()=>el.classList.toggle('open');
   dbox.appendChild(el);
 });
 
 function cardHTML(s,i,color){
-  const gm=`https://www.google.com/maps/search/?api=1&query=${s.c[0]},${s.c[1]}`;
+  const gm=gmPin(s.n,s.c);
   const img=PHOTOS[s.e];
   const phStyle = img ? `background-image:url('${img}');color:transparent`
                       : `background:${color}22`;
@@ -107,14 +114,14 @@ function cardHTML(s,i,color){
 
 // ---------- 범례 ----------
 document.getElementById('legend').innerHTML =
-  "마커: " + Object.entries(ICON).map(([k,v])=>`${v} ${({airport:'공항',spot:'명소',hotel:'숙박',trail:'트레킹',spring:'온천',food:'맛집'})[k]}`).join(" · ") + " · ⭐ 찜한 곳(Google 저장) · 🅷 숙박 · 🚁 드론 가능/허가/금지";
+  "마커: " + Object.entries(ICON).map(([k,v])=>`${v} ${({home:'집',airport:'공항',spot:'명소',hotel:'숙박',trail:'트레킹',spring:'온천',food:'맛집'})[k]}`).join(" · ") + " · ⭐ 찜한 곳(Google 저장) · 🅷 숙박 · 🚁 드론 가능/허가/금지";
 
 // ========== ⭐ 찜한 곳 (Google 저장 목록) ==========
 
 const favLayer = L.layerGroup().addTo(map);
 FAVORITES.forEach(f=>{
   const icon=L.divIcon({className:'',html:'<div class="star">⭐</div>',iconSize:[22,22],iconAnchor:[11,11]});
-  const gm=`https://www.google.com/maps/search/?api=1&query=${f.c[0]},${f.c[1]}`;
+  const gm=gmPin(f.n,f.c);
   L.marker(f.c,{icon}).addTo(favLayer).bindPopup(
     `<b>⭐ ${f.n}</b><br><span style="color:#777">${f.cat==='near'?'동선 근처':'우회 필요'}${f.note?' · '+f.note:''}</span>`+
     `<br><a href="${gm}" target="_blank">Google Maps ↗</a>`);
@@ -126,8 +133,7 @@ const favChip = mkChip("⭐ 찜한 곳", "#ffd34d", ()=>{
 fbox.appendChild(favChip);
 
 function favRow(f){
-  const gm=`https://www.google.com/maps/search/?api=1&query=${f.c[0]},${f.c[1]}`;
-  return `<a class="favrow" href="${gm}" target="_blank">⭐ <b>${f.n}</b> <span>${f.note||""}</span></a>`;
+  return `<a class="favrow" href="${gmPin(f.n,f.c)}" target="_blank">⭐ <b>${f.n}</b> <span>${f.note||""}</span></a>`;
 }
 const near=FAVORITES.filter(f=>f.cat==='near'), det=FAVORITES.filter(f=>f.cat==='detour');
 const favCard=document.createElement('div');
@@ -150,7 +156,7 @@ dbox.appendChild(favCard);
 const lodgeLayer = L.layerGroup().addTo(map);
 LODGING.forEach(l=>{
   const icon=L.divIcon({className:'',html:'<div class="lodge">H</div>',iconSize:[22,22],iconAnchor:[11,11]});
-  const gm=`https://www.google.com/maps/search/?api=1&query=${l.c[0]},${l.c[1]}`;
+  const gm=gmPin(l.n,l.c);
   L.marker(l.c,{icon}).addTo(lodgeLayer).bindPopup(
     `<b>🛏 ${l.d} 숙박</b><br>${l.n}`+(l.note?`<br><span style="color:#777">${l.note}</span>`:``)+
     `<br><a href="${gm}" target="_blank">Google Maps ↗</a>`);

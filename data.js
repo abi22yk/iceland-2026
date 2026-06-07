@@ -37,18 +37,33 @@ const PHOTOS = {
 };
 
 const DAYS = [
- { day:"7/2", title:"KEF 도착 → 남부 폭포 → Vík", color:"#e6194B", drive:"운전 ~3h20m · 245km", stay:"Skógar / Vík",
+ { day:"7/1", title:"🏠 집 출발 → 인천공항 → ✈️ 코펜하겐 경유", color:"#808080", drive:"야간 비행 · 코펜하겐 경유", stay:"기내 (야간 비행)", flight:true,
+   stops:[
+     {n:"집 (서울)", e:"Home", gq:"Seoul", intl:true, t:"home", c:[37.5665,126.9780], note:"여정 시작 🏠"},
+     {n:"인천공항 T2", e:"Incheon Airport", gq:"Incheon International Airport Terminal 2", intl:true, t:"airport", c:[37.4487,126.4505], note:"23:35 출발 · 제2터미널"},
+     {n:"코펜하겐 공항 T3", e:"Copenhagen Airport", gq:"Copenhagen Airport", intl:true, t:"airport", c:[55.6180,12.6508], note:"익일 06:00 도착 · 제3터미널(경유)"},
+   ],
+   seg:[
+     {f:"집",t:"인천공항 T2",d:"—",m:"~1h",note:"7/1 · 여유롭게 집결"},
+     {f:"인천(ICN) 23:35",t:"코펜하겐(CPH) 06:00+1",d:"✈️",m:"13h25m",note:"제2터미널 출발"},
+   ],
+   trails:[] },
+
+ { day:"7/2", title:"코펜하겐 ✈️ → KEF 도착 → 남부 폭포 → 솔헤이마요쿨 → Vík", color:"#e6194B", drive:"운전 ~3h30m · 250km", stay:"Skógar / Vík",
    stops:[
      {n:"케플라비크 공항", e:"Keflavík Airport", t:"airport", c:[63.985,-22.605], w:["en:Keflavík International Airport"]},
      {n:"셀야란즈포스", e:"Seljalandsfoss", dr:"permit", drn:"군중·보호구역, 주간 사실상 불가", t:"spot", c:[63.6156,-19.9886], w:["en:Seljalandsfoss"], note:"폭포 뒤로 걸어 들어감 · 방수재킷"},
      {n:"스코가포스", e:"Skógafoss", dr:"no", drn:"보호구역, 허가 불가", t:"spot", c:[63.5320,-19.5114], w:["en:Skógafoss"]},
      {n:"크베르누포스", e:"Kvernufoss", dr:"ok", drn:"규정상 가능(군중 주의)", t:"spot", c:[63.5300,-19.4920], w:["is:Kvernufoss","en:Kvernufoss"], note:"Skógar 박물관 옆 주차→도보 15분, 숨은 명소"},
+     {n:"솔헤이마요쿨 빙하", e:"Sólheimajökull", gq:"Sólheimajökull", dr:"ok", drn:"⭐드론 합법 최적지 — 공원·보호구역 밖, 일반규정만(아침/저녁 권장)", t:"spot", c:[63.5306,-19.3725], w:["en:Sólheimajökull"], note:"빙하 혀 도보 10~15분 · 빙하 드론 촬영 베스트"},
    ],
    seg:[
+     {f:"코펜하겐(CPH) 08:20",t:"레이캬비크(KEF) 09:40",d:"✈️",m:"3h20m",note:"제3터미널 경유 환승"},
      {f:"공항",t:"셀야란즈포스",d:"177km",m:"2h15m"},
      {f:"→",t:"스코가포스",d:"29km",m:"25m"},
      {f:"→",t:"크베르누포스",d:"3km+도보",m:"5m"},
-     {f:"→",t:"Vík/Skógar",d:"33km",m:"30m"},
+     {f:"→",t:"솔헤이마요쿨(Road 221)",d:"12km",m:"15m"},
+     {f:"→",t:"Vík/Skógar",d:"24km",m:"22m"},
    ],
    trails:[
      {nm:"스코가포스 — Skógá 강 '폭포길'(Waterfall Way)", st:"짧게 계단 위 전망대 왕복 ~15분 / 중간 ~4~6km·2~3h / 다리까지 ~14~16km·5~7h",
@@ -80,8 +95,8 @@ const DAYS = [
 
  { day:"7/4", title:"Vík → ⚠️F208 → 란드만 트레킹 ① → Highland Center", color:"#ffe119", drive:"운전 실제 ~5h · 180km", stay:"하이랜드 센터(확정)",
    stops:[
-     {n:"란드만달라우가", e:"Landmannalaugar", dr:"no", drn:"Fjallabak 자연보호구역", t:"spot", c:[63.9836,-19.0608], w:["en:Landmannalaugar"]},
-     {n:"수뒤르나뮈르 능선", e:"Suðurnámur", dr:"no", drn:"Fjallabak 자연보호구역", t:"trail", c:[64.0015,-19.0540], w:["en:Landmannalaugar"], note:"중간 코스(추천) — 분지 조망"},
+     {n:"란드만달라우가", e:"Landmannalaugar", dr:"no", drn:"❌ 불가 — Fjallabak 보호구역, 6/15~9/15 드론 전면 폐쇄·취미 허가 불가", t:"spot", c:[63.9836,-19.0608], w:["en:Landmannalaugar"]},
+     {n:"수뒤르나뮈르 능선", e:"Suðurnámur", dr:"no", drn:"❌ 불가 — Fjallabak 보호구역, 6/15~9/15 드론 전면 폐쇄·취미 허가 불가", t:"trail", c:[64.0015,-19.0540], w:["en:Landmannalaugar"], note:"중간 코스(추천) — 분지 조망"},
      {n:"란드만 노천온천(Laugar)", e:"Landmannalaugar Hot Spring", t:"spring", c:[63.9840,-19.0560], w:["en:Landmannalaugar"], note:"무료·약 40°C · 트레킹 후 마무리"},
      {n:"하이랜드 센터(Hrauneyjar)", e:"Highland Center", t:"hotel", c:[64.179,-19.346], w:["is:Hrauneyjar"], note:"고지대 마지막 주유소 — 주유 필수"},
    ],
@@ -104,8 +119,8 @@ const DAYS = [
 
  { day:"7/5", title:"란드만 트레킹 ② (긴 코스) → 하이포스 → Flúðir", color:"#bfef45", drive:"운전 ~4h · 180km · 도하 없음", stay:"Flúðir",
    stops:[
-     {n:"Bláhnúkur(블라우흐누퀴르)", e:"Bláhnúkur", dr:"no", drn:"Fjallabak 자연보호구역", t:"trail", c:[63.9790,-19.0660], w:["en:Landmannalaugar"], note:"대순환 루프 — 940m 정상"},
-     {n:"브레니스테인살다", e:"Brennisteinsalda", dr:"no", drn:"Fjallabak 자연보호구역", t:"trail", c:[63.974,-19.066], w:["en:Brennisteinsalda"], note:"대순환 루프에 포함(유황산)"},
+     {n:"Bláhnúkur(블라우흐누퀴르)", e:"Bláhnúkur", dr:"no", drn:"❌ 불가 — Fjallabak 보호구역, 6/15~9/15 드론 전면 폐쇄·취미 허가 불가", t:"trail", c:[63.9790,-19.0660], w:["en:Landmannalaugar"], note:"대순환 루프 — 940m 정상"},
+     {n:"브레니스테인살다", e:"Brennisteinsalda", dr:"no", drn:"❌ 불가 — Fjallabak 보호구역, 6/15~9/15 드론 전면 폐쇄·취미 허가 불가", t:"trail", c:[63.974,-19.066], w:["en:Brennisteinsalda"], note:"대순환 루프에 포함(유황산)"},
      {n:"란드만 노천온천(Laugar)", e:"Landmannalaugar Hot Spring", t:"spring", c:[63.9840,-19.0560], w:["en:Landmannalaugar"], note:"무료·약 40°C, 출발 전 또는 후 소욕"},
      {n:"하이포스", e:"Háifoss", dr:"no", drn:"Þjórsárdalur 보호구역", t:"spot", c:[64.2122,-19.6886], w:["en:Háifoss"], note:"진입로 332 거침, 4x4"},
      {n:"굴포스", e:"Gullfoss", dr:"no", drn:"천연기념물, 허가 불가", t:"spot", c:[64.3271,-20.1199], w:["en:Gullfoss"], note:"경유 옵션 +1h"},
@@ -129,7 +144,7 @@ const DAYS = [
  { day:"7/6", title:"굴포스 → ⚠️F35 → 컬링가프욜", color:"#3cb44b", drive:"운전 ~2h30m · 110km", stay:"highland base(확정)",
    stops:[
      {n:"컬링가프욜", e:"Kerlingarfjöll", dr:"permit", drn:"보호경관·허가 필요(불확실)", t:"trail", c:[64.6379,-19.2939], w:["en:Kerlingarfjöll"]},
-     {n:"Highland Base 온천", e:"Highland Base", t:"spring", c:[64.6333,-19.3000], w:["en:Kerlingarfjöll"]},
+     {n:"Highland Base 온천", e:"Highland Base", t:"spring", c:[64.6333,-19.3000], w:["en:Kerlingarfjöll"], note:"♨️ 온천 일정 — 숙소(Highland Base) 내 온천, 트레킹 후 저녁 휴식"},
    ],
    seg:[
      {f:"Flúðir",t:"굴포스(F35입구,포장)",d:"40km",m:"35m"},
@@ -158,7 +173,7 @@ const DAYS = [
      {n:"고다포스", e:"Goðafoss", dr:"no", drn:"천연기념물, 허가 불가", t:"spot", c:[65.6829,-17.5500], w:["en:Goðafoss"]},
      {n:"데티포스", e:"Dettifoss", dr:"permit", drn:"Vatnajökull NP — 서안만 시간대 허용", t:"spot", c:[65.8147,-16.3844], w:["en:Dettifoss"], note:"Route 862 서안=포장, 일반차 OK"},
      {n:"셀포스(상류)", e:"Selfoss", dr:"permit", drn:"Vatnajökull NP(불확실)", t:"spot", c:[65.8060,-16.3880], w:["en:Selfoss (waterfall)"], note:"데티포스 주차 후 상류 도보 15~20분"},
-     {n:"Vök Baths", e:"Vök Baths", t:"spring", c:[65.3000,-14.4700], w:["en:Vök Baths","is:Vök Baths"], note:"호수 위 떠 있는 노천탕 · 저녁 추천(7/8 or 7/9)"},
+     {n:"Vök Baths 온천", e:"Vök Baths", t:"spring", c:[65.3000,-14.4700], w:["en:Vök Baths","is:Vök Baths"], note:"♨️ 온천 일정 — 호수 위 떠 있는 노천탕, 도착 저녁 추천 · 사전 예약 권장"},
      {n:"에이일스타디르", e:"Egilsstaðir", t:"hotel", c:[65.2627,-14.3948], w:["en:Egilsstaðir"]},
    ],
    seg:[
@@ -169,18 +184,16 @@ const DAYS = [
    ],
    trails:[] },
 
- { day:"7/9", title:"헹기포스 → 슈트를라길 → 베스트라혼 → 회픈", color:"#911eb4", drive:"운전 ~4h30m · 290km", stay:"회픈",
+ { day:"7/9", title:"헹기포스 → 슈트를라길 → 숙소(Breiðdalur)", color:"#911eb4", drive:"운전 ~3h · 200km", stay:"Þverhamar (Breiðdalur)",
    stops:[
      {n:"헹기포스", e:"Hengifoss", dr:"ok", drn:"보호구역 아님", t:"trail", c:[65.0833,-14.8833], w:["en:Hengifoss"]},
      {n:"슈트를라길(동안 Klaustursel)", e:"Stuðlagil", dr:"ok", drn:"보호구역 아님(농지 예의)", t:"trail", c:[65.1411,-15.3266], w:["en:Stuðlagil"], note:"Road 923 후반 비포장"},
-     {n:"베스트라혼 / 스톡스네스", e:"Vestrahorn / Stokksnes", dr:"permit", drn:"사유지 — Viking Café 허가", t:"spot", c:[64.2483,-14.9667], w:["en:Vestrahorn","en:Stokksnes"], note:"Viking Café 입장료(~900 ISK)"},
-     {n:"회픈", e:"Höfn", t:"hotel", c:[64.2539,-15.2082], w:["en:Höfn"]},
+     {n:"Þverhamar 숙소 (Breiðdalur)", e:"Þverhamar", gq:"Þverhamar Breiðdalsvík", t:"hotel", c:[64.80415,-14.02304], note:"7/9 최종 목적지 · 숙소 (스톡스네스는 내일 아침)"},
    ],
    seg:[
      {f:"에이일스타디르",t:"헹기포스",d:"35km",m:"35m"},
      {f:"→",t:"슈트를라길(Klaustursel)",d:"50km",m:"50m"},
-     {f:"→",t:"베스트라혼/스톡스네스",d:"190km",m:"2h30m"},
-     {f:"→",t:"회픈",d:"15km",m:"15m"},
+     {f:"→",t:"Þverhamar 숙소(Breiðdalur)",d:"~115km",m:"1h40m",note:"에이일스타디르 거쳐 남하"},
    ],
    trails:[
      {nm:"헹기포스(Hengifoss)", st:"≈5km 왕복 · 고도 270m · 1.5~2h · 쉬움~중급",
@@ -193,8 +206,9 @@ const DAYS = [
       links:[{t:"AllTrails",u:"https://www.alltrails.com/trail/iceland/eastern/studlagil-canyon--2"},{t:"공식(Visit Austurland)",u:"https://www.east.is/en/place/studlagil-canyon"}]},
    ] },
 
- { day:"7/10", title:"요쿨살론 → 다이아몬드비치 → Múlagljúfur → 스카프타펠 → 프얄살론", color:"#f032e6", drive:"운전 ~3h45m · 290km · 일찍 출발", stay:"Skógar 근처",
+ { day:"7/10", title:"스톡스네스(아침) → 요쿨살론 → 다이아몬드비치 → Múlagljúfur → 스카프타펠 → 프얄살론", color:"#f032e6", drive:"운전 ~5h30m · 380km · 일찍 출발(긴 날)", stay:"Skógar 근처",
    stops:[
+     {n:"베스트라혼 / 스톡스네스 (아침)", e:"Vestrahorn / Stokksnes", dr:"permit", drn:"사유지 — Viking Café 허가받으면 가능", t:"spot", c:[64.2483,-14.9667], w:["en:Vestrahorn","en:Stokksnes"], note:"🌅 아침 일정 · Viking Café 입장료(~900 ISK) · Vestrahorn 반영샷"},
      {n:"요쿨살론 빙하호", e:"Jökulsárlón", dr:"no", drn:"Vatnajökull NP — 7/15까지 번식기 폐쇄", t:"spot", c:[64.0784,-16.2306], w:["en:Jökulsárlón"]},
      {n:"다이아몬드 비치", e:"Diamond Beach", dr:"no", drn:"Vatnajökull NP — 7/15까지 폐쇄", t:"spot", c:[64.0440,-16.1790], w:["en:Breiðamerkursandur"]},
      {n:"Múlagljúfur 협곡", e:"Múlagljúfur", dr:"ok", drn:"공원 밖, 가능", t:"trail", c:[63.98918,-16.46942], w:["en:Múlagljúfur"], note:"⭐ 저장 목록에서 편입 — 숨은 협곡"},
@@ -204,7 +218,8 @@ const DAYS = [
      {n:"엘드라운 이끼평원", e:"Eldhraun", dr:"permit", drn:"불확실 — 이끼 착륙 금지", t:"spot", c:[63.7500,-18.3000], w:["en:Eldhraun"], note:"Route1 변에서 감상 · 이끼 밟지 말 것"},
    ],
    seg:[
-     {f:"회픈",t:"요쿨살론",d:"80km",m:"1h"},
+     {f:"Breiðdalur 숙소",t:"스톡스네스(아침)",d:"~85km",m:"1h5m",note:"회픈 방면 남하"},
+     {f:"스톡스네스",t:"요쿨살론",d:"95km",m:"1h10m",note:"회픈 경유"},
      {f:"요쿨살론",t:"Múlagljúfur 주차장",d:"22km",m:"20m"},
      {f:"→",t:"스카프타펠",d:"38km",m:"30m"},
      {f:"→",t:"프얄살론",d:"75km",m:"55m"},
@@ -230,6 +245,22 @@ const DAYS = [
      {f:"Vík/Skógar",t:"레이캬비크 시내",d:"187km",m:"2h30m"},
      {f:"→",t:"블루라군",d:"50km",m:"45~50m"},
      {f:"(참고)",t:"블루라군→KEF",d:"23km",m:"20m"},
+   ],
+   trails:[],
+   notice:"🌋 용암/화산 — 2026.5 기준 분화는 없음(단 '분화 가능성 높음' 상태). 매일 vedur.is·safetravel.is·loftgaedi.is(가스) 확인, 분화 시 민방위(Almannavarnir) 지침 따라 관람. ▶ 상시 가능: Lava Show(레이캬비크/비크) · Inside the Volcano(7월 운영, 레이캬비크 근교 예약) · Raufarhólshellir 용암동굴 · 이미 일정의 엘드라운 용암밭." },
+
+ { day:"7/12–13", title:"레이캬비크 출국 → ✈️ 코펜하겐 경유 → 서울 → 🏠 집", color:"#808080", drive:"KEF 10:30 출발 · 코펜하겐 경유", stay:"집 도착 (7/13)", flight:true,
+   stops:[
+     {n:"레이캬비크 (KEF)", e:"Keflavík Airport", gq:"Keflavík International Airport", t:"airport", c:[63.985,-22.605], note:"7/12 10:30 출발"},
+     {n:"코펜하겐 공항 T3", e:"Copenhagen Airport", gq:"Copenhagen Airport", intl:true, t:"airport", c:[55.6180,12.6508], note:"15:35 도착 · 대기 8h20m · 23:55 재출발(경유)"},
+     {n:"인천공항 T2", e:"Incheon Airport", gq:"Incheon International Airport Terminal 2", intl:true, t:"airport", c:[37.4487,126.4505], note:"7/13 18:35 도착 · 제2터미널"},
+     {n:"집 (서울)", e:"Home", gq:"Seoul", intl:true, t:"home", c:[37.5665,126.9780], note:"여정 끝 🏠"},
+   ],
+   seg:[
+     {f:"레이캬비크(KEF) 10:30",t:"코펜하겐(CPH) 15:35",d:"✈️",m:"3h5m",note:"제3터미널 도착"},
+     {f:"코펜하겐 대기",t:"(환승)",d:"—",m:"8h20m",note:"15:35 → 23:55"},
+     {f:"코펜하겐(CPH) 23:55",t:"서울(ICN) 18:35+1",d:"✈️",m:"11h40m",note:"7/13 인천 제2터미널 도착"},
+     {f:"인천공항",t:"집",d:"—",m:"~1h",note:"🏠 여정 끝"},
    ],
    trails:[] },
 ];

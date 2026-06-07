@@ -33,7 +33,15 @@ const PHOTOS = {
  "Fjaðrárgljúfur": "images/fjadrargljufur.jpg",
  "Eldhraun": "images/eldhraun.jpg",
  "Reykjavík": "images/reykjavik.jpg",
- "Blue Lagoon": "images/blue-lagoon.jpg"
+ "Blue Lagoon": "images/blue-lagoon.jpg",
+ "Sólheimajökull": "images/solheimajokull.jpg",
+ "Hjörleifshöfði": "images/hjorleifshofdi.jpg",
+ "Bláhnúkur": "images/blahnukur.jpg",
+ "Vök Baths": "images/vok-baths.jpg",
+ "Þakgil": "images/thakgil.jpg",
+ "Suðurnámur": "images/sudurnamur.jpg",
+ "Þverhamar": "images/thverhamar.jpg",
+ "Múlagljúfur": "images/mulagljufur.jpg"
 };
 
 const DAYS = [

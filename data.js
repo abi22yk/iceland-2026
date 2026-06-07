@@ -126,12 +126,11 @@ const DAYS = [
      {n:"브레니스테인살다", e:"Brennisteinsalda", dr:"no", drn:"❌ 불가 — Fjallabak 보호구역, 6/15~9/15 드론 전면 폐쇄·취미 허가 불가", t:"trail", c:[63.974,-19.066], w:["en:Brennisteinsalda"], note:"대순환 루프에 포함(유황산)"},
      {n:"란드만 노천온천(Laugar)", e:"Landmannalaugar Hot Spring", t:"spring", c:[63.9840,-19.0560], w:["en:Landmannalaugar"], note:"무료·약 40°C, 출발 전 또는 후 소욕"},
      {n:"하이포스", e:"Háifoss", dr:"no", drn:"Þjórsárdalur 보호구역", t:"spot", c:[64.2122,-19.6886], w:["en:Háifoss"], note:"진입로 332 거침, 4x4"},
-     {n:"굴포스", e:"Gullfoss", dr:"no", drn:"천연기념물, 허가 불가", t:"spot", c:[64.3271,-20.1199], w:["en:Gullfoss"], note:"경유 옵션 +1h"},
    ],
    seg:[
      {f:"하이랜드센터",t:"란드만(트레킹 재진입)",d:"37km",m:"45m~1h",note:"아침 복귀"},
      {f:"란드만",t:"하이포스",d:"95km",m:"2h+"},
-     {f:"→",t:"Flúðir(굴포스 경유 가능)",d:"50km",m:"50m"},
+     {f:"→",t:"Flúðir 숙소",d:"45km",m:"45m",note:"굴포스는 내일(7/6) 경유"},
    ],
    trails:[
      {nm:"② 긴 코스 (추천) — Bláhnúkur + Brennisteinsalda 대순환 루프", st:"≈9.7km 루프 · 고도 610m · 4~6h · 상급",
@@ -146,6 +145,7 @@ const DAYS = [
 
  { day:"7/6", title:"굴포스 → ⚠️F35 → 컬링가프욜", color:"#3cb44b", drive:"운전 ~2h30m · 110km", stay:"highland base(확정)",
    stops:[
+     {n:"굴포스", e:"Gullfoss", dr:"no", drn:"천연기념물, 허가 불가", t:"spot", c:[64.3271,-20.1199], w:["en:Gullfoss"], note:"F35 진입 직전 · 황금폭포 (동선상 우회 0)"},
      {n:"컬링가프욜", e:"Kerlingarfjöll", dr:"permit", drn:"보호경관·허가 필요(불확실)", t:"trail", c:[64.6379,-19.2939], w:["en:Kerlingarfjöll"]},
      {n:"Highland Base 온천", e:"Highland Base", t:"spring", c:[64.6333,-19.3000], w:["en:Kerlingarfjöll"], note:"♨️ 온천 일정 — 숙소(Highland Base) 내 온천, 트레킹 후 저녁 휴식"},
    ],

@@ -49,7 +49,7 @@ const DAYS = [
    ],
    trails:[] },
 
- { day:"7/2", title:"코펜하겐 ✈️ → KEF 도착 → 남부 폭포 → 솔헤이마요쿨 → Vík", color:"#e6194B", drive:"운전 ~3h30m · 250km", stay:"Skógar / Vík",
+ { day:"7/2", title:"코펜하겐 ✈️ → KEF 도착 → 남부 폭포 → 솔헤이마요쿨 → Skógar", color:"#e6194B", drive:"운전 ~3h30m · 250km", stay:"Skógar Studio Apt (연박 1/2)",
    stops:[
      {n:"케플라비크 공항", e:"Keflavík Airport", t:"airport", c:[63.985,-22.605], w:["en:Keflavík International Airport"]},
      {n:"셀야란즈포스", e:"Seljalandsfoss", dr:"permit", drn:"군중·보호구역, 주간 사실상 불가", t:"spot", c:[63.6156,-19.9886], w:["en:Seljalandsfoss"], note:"폭포 뒤로 걸어 들어감 · 방수재킷"},
@@ -63,7 +63,7 @@ const DAYS = [
      {f:"→",t:"스코가포스",d:"29km",m:"25m"},
      {f:"→",t:"크베르누포스",d:"3km+도보",m:"5m"},
      {f:"→",t:"솔헤이마요쿨(Road 221)",d:"12km",m:"15m"},
-     {f:"→",t:"Vík/Skógar",d:"24km",m:"22m"},
+     {f:"→",t:"Skógar 숙소",d:"24km",m:"22m"},
    ],
    trails:[
      {nm:"스코가포스 — Skógá 강 '폭포길'(Waterfall Way)", st:"짧게 계단 위 전망대 왕복 ~15분 / 중간 ~4~6km·2~3h / 다리까지 ~14~16km·5~7h",
@@ -72,16 +72,19 @@ const DAYS = [
       links:[{t:"AllTrails",u:"https://www.alltrails.com/trail/iceland/southern/skogafoss-skalabrekkufoss-waterfalls"},{t:"가이드",u:"https://adventures.is/blog/discover-the-skogafoss-waterfall-way-hike/"}]},
    ] },
 
- { day:"7/3", title:"샤크길(Þakgil) · 디르홀레이", color:"#f58231", drive:"운전 ~1h45m · 60km", stay:"Vík",
+ { day:"7/3", title:"샤크길 · Hjörleifshöfði(흑사장) · 레이니스피아라 · 디르홀레이", color:"#f58231", drive:"운전 ~2h35m · 135km", stay:"Skógar Studio Apt (연박 2/2)",
    stops:[
      {n:"샤크길", e:"Þakgil", dr:"ok", drn:"보호구역 아님(현장 확인)", t:"trail", c:[63.5167,-18.8500], w:["is:Þakgil"], note:"Road 214 비포장 자갈 · 천천히"},
+     {n:"효를레이프스회프디 (흑사장)", e:"Hjörleifshöfði", gq:"Hjörleifshöfði", dr:"ok", drn:"보호구역 아님 — 일반규정(군중·바람·바닷가 주의)", t:"spot", c:[63.4178,-18.7616], w:["en:Hjörleifshöfði"], note:"검은 모래 곶 · Yoda Cave(요다 동굴) 명소"},
+     {n:"레이니스피아라 흑사장", e:"Reynisfjara", dr:"no", drn:"안전·군중 금지", t:"spot", c:[63.4036,-19.0447], w:["en:Reynisfjara","en:Reynisdrangar"], note:"☠️ 너울(sneaker wave) 주의"},
      {n:"디르홀레이", e:"Dyrhólaey", dr:"no", drn:"조류 번식 보호구역", t:"spot", c:[63.4022,-19.1280], w:["en:Dyrhólaey"]},
-     {n:"레이니스피아라 흑사장", e:"Reynisfjara", dr:"no", drn:"안전·군중 금지", t:"spot", c:[63.4036,-19.0447], w:["en:Reynisfjara","en:Reynisdrangar"], note:"가는 길에 들르기 좋음"},
    ],
    seg:[
-     {f:"Vík",t:"샤크길(Road214)",d:"20km",m:"40~50m",note:"자갈"},
-     {f:"→",t:"디르홀레이",d:"28km",m:"40m"},
-     {f:"→",t:"Vík",d:"12km",m:"15m"},
+     {f:"Skógar 숙소",t:"샤크길(Road214)",d:"~52km",m:"1h",note:"비포장 자갈"},
+     {f:"→",t:"Hjörleifshöfði(흑사장)",d:"22km",m:"25m"},
+     {f:"→",t:"레이니스피아라",d:"22km",m:"25m"},
+     {f:"→",t:"디르홀레이",d:"10km",m:"15m"},
+     {f:"→",t:"Skógar 숙소",d:"28km",m:"30m"},
    ],
    trails:[
      {nm:"Þakgil — Remundargil 루프 (보라색 · 추천)", st:"≈12.5km · 고도 250m · 3~5h · 중급",

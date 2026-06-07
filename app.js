@@ -12,7 +12,22 @@ const isIce = c => c[0]>=63 && c[0]<=67 && c[1]>=-25 && c[1]<=-13;
 // Google Maps: 정확한 좌표에 핀을 찍되 라벨은 "장소명"으로 표시
 function gmPin(label,c){ const lbl=String(label).replace(/[()]/g,'').replace(/\s+/g,' ').trim(); return `https://www.google.com/maps?q=${c[0]},${c[1]}(${encodeURIComponent(lbl)})`; }
 function gmQ(s){ return s.gq || s.e.split(/ \(| \/ /)[0] + (s.intl?"":", Iceland"); }
-function gmDir(stops){ return "https://www.google.com/maps/dir/"+stops.map(s=>encodeURIComponent(gmQ(s))).join("/"); }
+function gmDir(stops){ return "https://www.google.com/maps/dir/"+stops.map(s=> s.lodge ? `${s.c[0]},${s.c[1]}` : encodeURIComponent(gmQ(s))).join("/"); }
+
+// 숙소(LODGING)를 날짜별로 매핑 — 하루 경로의 시작/끝을 숙소로
+const LODGE_BY_DAY = {};
+LODGING.forEach(l=>{ const m=l.d.match(/^(\d+)\/(\d+)(?:[–-](\d+))?$/); if(m){ const mo=m[1],a=+m[2],b=m[3]?+m[3]:a; for(let d=a;d<=b;d++) LODGE_BY_DAY[`${mo}/${d}`]=l; } });
+function dayLodge(D){ return LODGE_BY_DAY[D.day]||null; }
+const sameSpot=(a,b)=>Math.abs(a[0]-b[0])<0.01 && Math.abs(a[1]-b[1])<0.01;
+function lodgeStop(l){ return {n:l.n, e:l.n, c:l.c, t:'hotel', lodge:true}; }
+// 하루 경로 = [전날 숙소] → 스팟들 → [당일 숙소] (아이슬란드 내에서만)
+function dayRoute(D, di){
+  const arr = D.stops.filter(s=>isIce(s.c)).slice();
+  const lodge = dayLodge(D), prevLodge = di>0 ? dayLodge(DAYS[di-1]) : null;
+  if(prevLodge && isIce(prevLodge.c) && (!arr.length || !sameSpot(arr[0].c, prevLodge.c))) arr.unshift(lodgeStop(prevLodge));
+  if(lodge && isIce(lodge.c) && (!arr.length || !sameSpot(arr[arr.length-1].c, lodge.c))) arr.push(lodgeStop(lodge));
+  return arr;
+}
 
 // ---------- 지도 ----------
 const map = L.map('map',{scrollWheelZoom:true}).setView([64.9,-18.6],6);
@@ -24,10 +39,9 @@ const allBounds = [];
 
 DAYS.forEach((D, di)=>{
   const grp = L.layerGroup().addTo(map);
-  const pts = [];
   D.stops.forEach((s, si)=>{
     if(!isIce(s.c)) return;   // 집·경유 공항(서울/인천/코펜하겐)은 지도에 표기 안 함 — 카드에만 표시
-    allBounds.push(s.c); pts.push(s.c);
+    allBounds.push(s.c);
     const icon = L.divIcon({className:'', html:`<div class="num" style="background:${D.color}">${si+1}</div>`,
        iconSize:[22,22], iconAnchor:[11,11]});
     L.marker(s.c,{icon}).addTo(grp).bindPopup(
@@ -36,9 +50,9 @@ DAYS.forEach((D, di)=>{
       (s.dr?`<br>🚁 드론 <b style="color:${s.dr==='ok'?'#2a8':s.dr==='permit'?'#c80':'#c33'}">${DR[s.dr]}</b> — ${s.drn||''}`:``)+
       `<br><a href="${gmPin(s.n,s.c)}" target="_blank">Google Maps에서 열기 ↗</a>`);
   });
-  // 연결 polyline (아이슬란드 구간만 · 당일 + 전날 마지막 → 당일 첫 스팟)
-  if(di>0){ const prev = DAYS[di-1].stops.filter(s=>isIce(s.c)); if(prev.length && pts.length) pts.unshift(prev[prev.length-1].c); }
-  if(pts.length>1) L.polyline(pts,{color:D.color,weight:3.5,opacity:.85}).addTo(grp);
+  // 경로선: [전날 숙소] → 스팟들 → [당일 숙소] (아이슬란드 구간만)
+  const route = dayRoute(D, di);
+  if(route.length>1) L.polyline(route.map(s=>s.c),{color:D.color,weight:3.5,opacity:.85}).addTo(grp);
   dayLayers.push(grp);
 });
 map.fitBounds(allBounds,{padding:[30,30]});
@@ -71,7 +85,7 @@ const dbox=document.getElementById('days');
 DAYS.forEach((D,di)=>{
   const el=document.createElement('div'); el.className='day'+(di===0?' open':'');
   el.style.setProperty('--c',D.color);
-  const gmDirUrl = D.flight ? null : gmDir(D.stops);
+  const gmDirUrl = D.flight ? null : gmDir(dayRoute(D, di));
   el.innerHTML=`
     <div class="day-h" style="--c:${D.color}">
       <span class="date">${D.day}</span>

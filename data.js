@@ -104,8 +104,9 @@ const DAYS = [
       tp:"표지는 색상 코드로 구분. 캠프장 지도는 개략도라 오프라인 지도 권장."},
    ] },
 
- { day:"7/4", title:"Vík → ⚠️F208 → 란드만 트레킹 ① → Highland Center", color:"#ffe119", drive:"운전 실제 ~5h · 180km", stay:"하이랜드 센터(확정)",
+ { day:"7/4", title:"Vík → ⚠️F208 → 엘드가우 → 란드만 트레킹 ① → Highland Center", color:"#ffe119", drive:"운전 실제 ~5h · 180km", stay:"하이랜드 센터(확정)",
    stops:[
+     {n:"엘드가우(Eldgjá)/오바이루포스", e:"Eldgjá", dr:"permit", drn:"Vatnajökull NP — 허가 필요", t:"trail", c:[63.967,-18.617], w:["en:Eldgjá","en:Ófærufoss"], note:"F208→F223 분기, 진입로 도하 1곳 · 폭포까지 왕복 2~2.5h(입구만 15~20분)"},
      {n:"란드만달라우가", e:"Landmannalaugar", dr:"no", drn:"❌ 불가 — Fjallabak 보호구역, 6/15~9/15 드론 전면 폐쇄·취미 허가 불가", t:"spot", c:[63.9836,-19.0608], w:["en:Landmannalaugar"]},
      {n:"수뒤르나뮈르 능선", e:"Suðurnámur", dr:"no", drn:"❌ 불가 — Fjallabak 보호구역, 6/15~9/15 드론 전면 폐쇄·취미 허가 불가", t:"trail", c:[64.0015,-19.0540], w:["en:Landmannalaugar"], note:"중간 코스(추천) — 분지 조망"},
      {n:"란드만 노천온천(Laugar)", e:"Landmannalaugar Hot Spring", t:"spring", c:[63.9840,-19.0560], w:["en:Landmannalaugar"], note:"무료·약 40°C · 트레킹 후 마무리"},
@@ -113,10 +114,15 @@ const DAYS = [
    ],
    seg:[
      {f:"Vík",t:"F208 남쪽 입구(포장)",d:"70km",m:"50m"},
-     {f:"F208",t:"란드만달라우가",d:"75km",m:"구글 2h30m / 실제 3~4h",warn:true,note:"도하 8회+, Eldgjá 부근 깊은 도하 1곳"},
+     {f:"F208",t:"엘드가우(F223 분기)",d:"약 35km",m:"1h~1h30m",warn:true,note:"F223 진입로 ~3km·도하 1곳. 폭포 보면 +2~2.5h"},
+     {f:"엘드가우",t:"란드만달라우가",d:"약 40km",m:"실제 1h30m~2h",warn:true,note:"도하 다수, 나머지 깊은 도하 구간"},
      {f:"→",t:"Highland Center",d:"37km",m:"45m~1h",note:"트레킹·온천 후 이동"},
    ],
    trails:[
+     {nm:"엘드가우 협곡 — 오바이루포스(Ófærufoss)", st:"주차장→폭포 편도 ~2.5km · 왕복 2~2.5h · 쉬움~중급(평탄)",
+      ds:"세계 최대급 화산 열극협곡(길이 ~40km). 협곡 안쪽 2단 폭포 오바이루포스까지 강변 트레일, 도중 인도교로 도하. 입구·하단 전망만이면 15~20분.",
+      tp:"💡 7/4가 이미 길어 시간 빠듯하면 입구 전망(15~20분)만. 폭포까지 가려면 왕복 2시간 확보. 공식 권장 체류 2~3h.",
+      links:[{t:"공식(Vatnajökull NP)",u:"https://www.vatnajokulsthjodgardur.is/en"},{t:"AllTrails",u:"https://www.alltrails.com/trail/iceland/southern/ofaerufoss"}]},
      {nm:"① 중간 코스 (추천) — 수뒤르나뮈르(Suðurnámur) 능선", st:"≈8.5km 루프 · 고도 440m · 3~4.5h(빠르면 3h) · 중급",
       ds:"캠프 북쪽 F208 따라 1km → Námshraun 용암밭 가로질러 능선 2단 오르막. 분지 전체(Bláhnúkur·Brennisteinsalda·Grænagil·용암밭)를 내려다보는 조망형. 큰 스크리 하산 없고 위험 낮아 도착 피곤한 날에 적합.",
       tp:"💡 7/5 긴 코스와 지형이 거의 안 겹침(능선 위 vs 분지 안). 구름 낮으면 조망이 핵심이라 ↓ 대안 고려.",
@@ -241,10 +247,10 @@ const DAYS = [
       ds:"주차장에서 오르막 트레일 따라 ~30~45분 → Hangandifoss 폭포와 이끼 협곡, Öræfajökull 빙하를 배경으로 한 절경 전망. 관광객 적은 숨은 명소.",
       tp:"💡 비 온 뒤 매우 질척임 → 방수 신발 필수. 가드레일 없으니 절벽 가장자리 주의. 스카프타펠 S6와 둘 다 하면 빡센 하루 → 컨디션 보고 택1 가능.",
       links:[{t:"AllTrails",u:"https://www.alltrails.com/trail/iceland/eastern/hangandifoss-waterfall-mulagljufur-canyon"},{t:"가이드",u:"https://www.gocampers.is/nature/canyons/mulagljufur-canyon/"}]},
-     {nm:"스카프타펠 S6 (Svartifoss → Sjónarnípa) ⭐추천", st:"≈7.1km · 고도 310m · 2.5~3h · 중급(공식: Challenging)",
-      ds:"이 한 코스로 스바르티포스(주상절리 폭포) + Skaftafellsjökull 빙하 전망 둘 다 커버. S3(16.6km,5~6h)는 두 배 거리에 추가 가치 적음. 짧게 가려면 S1(스바르티포스만 왕복 ~3.7km·1~1.5h).",
-      tp:"💡 비지터센터 주차장 오전 10시 전 도착(7월엔 오전 중 만차).",
-      links:[{t:"AllTrails",u:"https://www.alltrails.com/trail/iceland/southern/sjonarnipa-svartifoss-magnusafoss-hundafoss-via-austurbrekkur"},{t:"공식(국립공원 S6)",u:"https://www.vatnajokulsthjodgardur.is/en/areas/skaftafell/svartifoss-sjonarnipa-s6"}]},
+     {nm:"스카프타펠 S6 (Svartifoss → Sjónarnípa) ⭐추천", st:"≈7.4km · 고도 320m · 2.5~3h · 중급(공식: Challenging)",
+      ds:"이 한 코스로 스바르티포스(주상절리 폭포) + Sjónarnípa에서 Skaftafellsjökull 빙하·Öræfajökull 전망 둘 다 커버(=S1+S5 합본). 더 깊게는 S3(Skaftafellsheiði 대순환 16.6km·고도765m·5~6h)도 가치 있으나 시간 급증 → 물라글류퓌르와는 양립 어려움(택1). 짧게는 S1(스바르티포스만 왕복 ~3.7km·1~1.5h).",
+      tp:"💡 비지터센터 주차장 오전 10시 전 도착(7월엔 오전 중 만차). ⚠️ S4(Kristínartindar 17.9km·6~8h)는 위험·비추천. 🌙 백야라도 저녁 트레킹 비추천 — 물라글류퓌르로 시간 빠듯하니 S6는 오후 이른 시간에 시작.",
+      links:[{t:"AllTrails",u:"https://www.alltrails.com/trail/iceland/southern/sjonarnipa-svartifoss-magnusafoss-hundafoss-via-austurbrekkur"},{t:"공식 S6",u:"https://www.vatnajokulsthjodgardur.is/en/areas/skaftafell/svartifoss-sjonarnipa-s6"},{t:"공식 S5(Sjónarnípa)",u:"https://www.vatnajokulsthjodgardur.is/en/areas/skaftafell/sjonarnipa-s5"},{t:"공식 S3(대순환)",u:"https://www.vatnajokulsthjodgardur.is/en/areas/skaftafell/skaftafellsheidi-s3"}]},
    ] },
 
  { day:"7/11", title:"시내구경 → 블루라군", color:"#a9a9a9", drive:"운전 ~3h20m · 237km", stay:"Silica Hotel(레이캬비크)",

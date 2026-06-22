@@ -95,7 +95,11 @@ const DAYS = [
      {f:"→",t:"Skógar 숙소",d:"28km",m:"30m"},
    ],
    trails:[
-     {nm:"Þakgil — Remundargil 루프 (보라색 · 추천)", st:"≈11km 루프 · 고도 752m · 5~5.5h · 상급(Hard) [AllTrails]",
+     {nm:"Þakgil — ★1순위: Mýrdalsjökull 빙하 전망 루트", st:"≈13.8km 왕복(out-and-back) · 고도 648m · 5~5.5h · 중급 [AllTrails]",
+      ds:"캠프장에서 꾸준히 오르며 Mýrdalsjökull 빙하 + Katla 화산 고원의 광활한 파노라마로 향하는 코스. 말발굽 모양 협곡 전망 포함 — Þakgil 빙하 뷰 하이라이트.",
+      tp:"💡 등산 스틱 권장(후반 가파른 자갈 하산), 도하 1회(수위 따라) 주의, 오전 출발. 더 짧게는 빨강(Red) 루프에 빙하 전망 디투어(+~4km·1~1.5h)를 붙여도 됨.",
+      links:[{t:"AllTrails(Mýrdalsjökull)",u:"https://www.alltrails.com/trail/iceland/southern/myrdalsjokull-glacier"},{t:"가이드(Red+빙하 디투어)",u:"https://thephotohikes.com/thakgil-red-trail-loop/"}]},
+     {nm:"Þakgil — Remundargil 루프 (보라색)", st:"≈11km 루프 · 고도 752m · 5~5.5h · 상급(Hard) [AllTrails]",
       ds:"캠프장에서 강 따라 → 가파른 흙길 오르막 → Remundargil 협곡(Remundargilsfoss 폭포) → Kötlujökull(카틀라) 빙하 전망. 캠프장에 동굴 식당·온수 샤워. 세 색상 루프 중 가장 인기.",
       tp:"💡 등산 스틱 필수, 오전 출발. 짧게는 협곡 입구·동굴까지 ~3.8km(1h 미만) 쉬운 옵션. ⚠️ Vatnsrásarhöfuð 연장 변형은 '25 여름부터 일부 비공식 → 캠프장에서 현재 상태 확인. 매년 루트가 조금씩 바뀜.",
       links:[{t:"AllTrails(Remundargil)",u:"https://www.alltrails.com/trail/iceland/southern/thakgil-remundargil-vatnsrasarhofud"},{t:"가이드",u:"https://thephotohikes.com/thakgil-hiking-and-camping/"}]},

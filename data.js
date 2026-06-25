@@ -60,6 +60,7 @@ const DAYS = [
  { day:"7/2", title:"코펜하겐 ✈️ → KEF 도착 → 남부 폭포 → 솔헤이마요쿨 → Skógar", color:"#e6194B", drive:"운전 ~3h30m · 250km", stay:"Skógar Studio Apt (연박 1/2)",
    stops:[
      {n:"케플라비크 공항", e:"Keflavík Airport", t:"airport", c:[63.985,-22.605], w:["en:Keflavík International Airport"]},
+     {n:"글류브라부이", e:"Gljúfrabúi", dr:"permit", drn:"셀야란즈포스 인접·군중, 사실상 불가", t:"spot", c:[63.6216,-19.9889], w:["en:Gljúfrabúi"], note:"셀야란즈포스 옆 ~600m · 절벽 틈 속 숨은 폭포 · 물 많이 튐(방수+방수신발)"},
      {n:"셀야란즈포스", e:"Seljalandsfoss", dr:"permit", drn:"군중·보호구역, 주간 사실상 불가", t:"spot", c:[63.6156,-19.9886], w:["en:Seljalandsfoss"], note:"폭포 뒤로 걸어 들어감 · 방수재킷"},
      {n:"스코가포스", e:"Skógafoss", dr:"no", drn:"보호구역, 허가 불가", t:"spot", c:[63.5320,-19.5114], w:["en:Skógafoss"]},
      {n:"크베르누포스", e:"Kvernufoss", dr:"ok", drn:"규정상 가능(군중 주의)", t:"spot", c:[63.5300,-19.4920], w:["is:Kvernufoss","en:Kvernufoss"], note:"Skógar 박물관 옆 주차→도보 15분, 숨은 명소"},
@@ -67,7 +68,8 @@ const DAYS = [
    ],
    seg:[
      {f:"코펜하겐(CPH) 08:20",t:"레이캬비크(KEF) 09:40",d:"✈️",m:"3h20m",note:"제3터미널 경유 환승"},
-     {f:"공항",t:"셀야란즈포스",d:"177km",m:"2h15m"},
+     {f:"공항",t:"글류브라부이",d:"176km",m:"2h15m"},
+     {f:"→",t:"셀야란즈포스",d:"~0.6km 도보",m:"10m",note:"같은 주차장 · 북쪽에서 남쪽으로"},
      {f:"→",t:"스코가포스",d:"29km",m:"25m"},
      {f:"→",t:"크베르누포스",d:"3km+도보",m:"5m"},
      {f:"→",t:"솔헤이마요쿨(Road 221)",d:"12km",m:"15m"},

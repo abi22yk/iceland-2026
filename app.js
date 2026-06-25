@@ -105,7 +105,7 @@ DAYS.forEach((D,di)=>{
         <div class="trail"><div class="tn">${t.nm}</div><div class="st">${t.st}</div>
         <div class="ds">${t.ds}</div><div class="tp">${t.tp}</div>
         ${t.links?`<div class="tlinks">${t.links.map(l=>`<a href="${l.u}" target="_blank">${l.t} ↗</a>`).join("")}</div>`:``}</div>`).join(""):``}
-      <div class="meta"><span class="pill">🛏 숙박 <b>${D.stay}</b></span></div>
+      <div class="meta"><span class="pill">🛏 숙박 <b>${D.stay}</b></span>${dayLodge(D)&&dayLodge(D).bf?`<span class="pill bf">🥐 조식</span>`:``}</div>
       ${gmDirUrl?`<a class="gm" href="${gmDirUrl}" target="_blank">🗺️ 이 날 경로 Google Maps로 열기 ↗</a>`:``}
     </div>`;
   el.querySelector('.day-h').onclick=()=>el.classList.toggle('open');
@@ -172,7 +172,7 @@ LODGING.forEach(l=>{
   const icon=L.divIcon({className:'',html:'<div class="lodge">H</div>',iconSize:[22,22],iconAnchor:[11,11]});
   const gm=gmPin(l.n,l.c);
   L.marker(l.c,{icon}).addTo(lodgeLayer).bindPopup(
-    `<b>🛏 ${l.d} 숙박</b><br>${l.n}`+(l.note?`<br><span style="color:#777">${l.note}</span>`:``)+
+    `<b>🛏 ${l.d} 숙박</b><br>${l.n}`+(l.bf?` <span style="color:#0a7d33">🥐 조식</span>`:``)+(l.note?`<br><span style="color:#777">${l.note}</span>`:``)+
     `<br><a href="${gm}" target="_blank">Google Maps ↗</a>`);
 });
 const lodgeChip = mkChip("🛏 숙박(H)", "#5a8bb0", ()=>{

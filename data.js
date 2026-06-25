@@ -216,18 +216,18 @@ const DAYS = [
    ],
    trails:[] },
 
- { day:"7/9", title:"헹기포스 → 슈트를라길 → 스톡스네스(저녁) → 회픈(Holmur)", color:"#911eb4", drive:"운전 ~6h · 약 400km · 긴 날", stay:"Holmur (Höfn)",
+ { day:"7/9", title:"헹기포스 → 슈트를라길 → 스톡스네스(저녁) → 회픈(Nypugardar)", color:"#911eb4", drive:"운전 ~6h · 약 400km · 긴 날", stay:"Guesthouse Nypugardar (Höfn)",
    stops:[
      {n:"헹기포스", e:"Hengifoss", dr:"ok", drn:"보호구역 아님", t:"trail", c:[65.0833,-14.8833], w:["en:Hengifoss"]},
      {n:"슈트를라길(동안 Klaustursel)", e:"Stuðlagil", dr:"ok", drn:"보호구역 아님(농지 예의)", t:"trail", c:[65.1411,-15.3266], w:["en:Stuðlagil"], note:"Road 923 후반 비포장"},
      {n:"베스트라혼 / 스톡스네스 (저녁)", e:"Vestrahorn / Stokksnes", dr:"permit", drn:"사유지 — Viking Café 허가받으면 가능", t:"spot", c:[64.2483,-14.9667], w:["en:Vestrahorn","en:Stokksnes"], note:"📷 반영샷 · Viking Café 입장료(~900 ISK) · 7/9 만조 22:26 → 21~23시 황혼+물 찬 모래 거울반영 (무풍일 때 최상)"},
-     {n:"Holmur 숙소 (Höfn)", e:"Höfn", gq:"Holmur Hofn Iceland 781", t:"hotel", c:[64.2833,-15.2667], w:["en:Höfn"], note:"781 Hólmur · 회픈 근처 · 스톡스네스 ~15km (좌표 근사값)"},
+     {n:"Guesthouse Nypugardar (Höfn)", e:"Höfn", gq:"Nypugardar 781 Hofn Iceland", t:"hotel", c:[64.2833,-15.2667], w:["en:Höfn"], note:"Nypugardar, 781 Höfn · 회픈 근처 · 스톡스네스 ~15km (좌표 근사값) · 🥐 조식 제공"},
    ],
    seg:[
      {f:"에이일스타디르",t:"헹기포스",d:"35km",m:"35m"},
      {f:"→",t:"슈트를라길(Klaustursel)",d:"50km",m:"50m"},
      {f:"슈트를라길",t:"스톡스네스(저녁)",d:"~285km",m:"3h40m",note:"에이일스타디르 거쳐 동부 피오르드 따라 남하"},
-     {f:"스톡스네스",t:"Holmur 숙소(Höfn)",d:"~20km",m:"20m"},
+     {f:"스톡스네스",t:"Nypugardar 숙소(Höfn)",d:"~20km",m:"20m"},
    ],
    trails:[
      {nm:"헹기포스(Hengifoss)", st:"≈5.1km 왕복 · 고도 264m · 1.5~2h · 중급 [AllTrails]",
@@ -251,7 +251,7 @@ const DAYS = [
      {n:"엘드라운 이끼평원", e:"Eldhraun", dr:"permit", drn:"불확실 — 이끼 착륙 금지", t:"spot", c:[63.7500,-18.3000], w:["en:Eldhraun"], note:"Route1 변에서 감상 · 이끼 밟지 말 것"},
    ],
    seg:[
-     {f:"Holmur(Höfn) 숙소",t:"요쿨살론",d:"80km",m:"1h",note:"링로드 서진"},
+     {f:"Nypugardar(Höfn) 숙소",t:"요쿨살론",d:"80km",m:"1h",note:"링로드 서진"},
      {f:"요쿨살론",t:"Múlagljúfur 주차장",d:"22km",m:"20m"},
      {f:"→",t:"스카프타펠",d:"38km",m:"30m"},
      {f:"→",t:"프얄살론",d:"75km",m:"55m"},
@@ -319,12 +319,12 @@ const FAVORITES = [
 
 const LODGING = [
  {d:"7/2–3", n:"Skógar Studio Apartment", c:[63.52695,-19.49443], note:"Skógar (스코가포스 근처)"},
- {d:"7/4", n:"Highland Center (Hrauneyjar)", c:[64.179,-19.346], note:"확정"},
+ {d:"7/4", n:"Highland Center (Hrauneyjar)", c:[64.179,-19.346], note:"확정", bf:1},
  {d:"7/5", n:"Efra-Sel, Flúðir", c:[64.14036,-20.36023], note:""},
- {d:"7/6", n:"Highland Base (Kerlingarfjöll)", c:[64.6333,-19.300], note:"확정"},
+ {d:"7/6", n:"Highland Base (Kerlingarfjöll)", c:[64.6333,-19.300], note:"확정", bf:1},
  {d:"7/7", n:"Krossdalur 2 (2층) · Kelduhverfi", c:[66.0556,-16.5800], note:"Krossdalur 2, 2nd floor, North Iceland, Norðurþing 671, Iceland · 후사비크 동쪽 ~50km, 아스비르기 근처 (좌표 근사값)"},
  {d:"7/8", n:"Studio Apartment Central (Egilsstaðir)", c:[65.25902,-14.3952], note:""},
- {d:"7/9", n:"Holmur (Höfn)", c:[64.2833,-15.2667], note:"Holmur, 781 Hólmur, Iceland · 회픈 근처 · 스톡스네스 ~15km (좌표 근사값)"},
+ {d:"7/9", n:"Guesthouse Nypugardar (Höfn)", c:[64.2833,-15.2667], note:"Nypugardar, 781 Höfn, Iceland · 회픈 근처 · 스톡스네스 ~15km (좌표 근사값)", bf:1},
  {d:"7/10", n:"Mountain Queen Angelica (Drangshlíð)", c:[63.5269,-19.4470], note:"Skógar 근처"},
- {d:"7/11", n:"Silica Hotel", c:[63.88063,-22.44162], note:"⚠️ 레이캬비크 아님 — Blue Lagoon 옆"},
+ {d:"7/11", n:"Silica Hotel", c:[63.88063,-22.44162], note:"⚠️ 레이캬비크 아님 — Blue Lagoon 옆", bf:1},
 ];

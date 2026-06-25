@@ -47,6 +47,7 @@
   .meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;font-size:12px}
   .pill{background:#16242e;border:1px solid var(--line);padding:3px 9px;border-radius:7px;color:var(--muted)}
   .pill b{color:var(--ink)}
+  .pill.bf{background:#10301c;border-color:#1d6b3a;color:#7fe0a0;margin-left:6px}
   .gm{display:inline-block;margin:6px 0;font-size:12px;color:#8cd;text-decoration:none;border:1px solid #2b4350;
       padding:5px 10px;border-radius:8px}
   .note{background:var(--warnbg);border:1px solid #5a4420;color:#ffd9a0;padding:8px 11px;border-radius:8px;font-size:12px;margin:8px 0}
